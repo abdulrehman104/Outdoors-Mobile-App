@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'chat_detail_screen.dart'; // Import the ChatDetailScreen
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -9,7 +10,6 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   int selectedTab = 0;
   final List<String> tabs = ["Unread", "Read", "Archived"];
-  // Different data for each tab
   final Map<String, List<Map<String, dynamic>>> tabData = {
     "Unread": List.generate(
       8,
@@ -64,7 +64,6 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// Enhanced Tab Row
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             padding: const EdgeInsets.all(4),
@@ -85,9 +84,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       margin: const EdgeInsets.symmetric(horizontal: 2),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       decoration: BoxDecoration(
-                        color: isSelected
-                            ? const Color(0xFF0B1209) // Kept #0B1209 for selected tab
-                            : Colors.transparent,
+                        color: isSelected ? const Color(0xFF0B1209) : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                         border: isSelected
                             ? Border.all(color: const Color(0xFF4A7C24), width: 1.5)
@@ -97,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Text(
                         tabs[index],
                         style: TextStyle(
-                          color: Colors.white, // Changed to white for tab text
+                          color: Colors.white,
                           fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                           fontSize: 14,
                         ),
@@ -108,7 +105,6 @@ class _ChatScreenState extends State<ChatScreen> {
               }),
             ),
           ),
-          /// Chat List
           Expanded(
             child: currentChats.isEmpty
                 ? Center(
@@ -236,8 +232,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       ],
                     ),
                     onTap: () {
-                      // Navigate to individual chat
-                      print("Tapped on ${chat["name"]}");
+                      // Navigate to ChatDetailScreen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatDetailScreen(
+                            name: chat["name"],
+                            avatar: chat["avatar"],
+                          ),
+                        ),
+                      );
                     },
                   ),
                 );
