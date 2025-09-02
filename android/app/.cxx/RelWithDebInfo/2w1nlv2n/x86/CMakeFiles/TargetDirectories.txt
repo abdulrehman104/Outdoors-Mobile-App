@@ -1,0 +1,2 @@
+C:/MY WORKS/ONGOING PROJECTS/SATA TECHNOLOGIES/CuttingEdge/android/app/.cxx/RelWithDebInfo/2w1nlv2n/x86/CMakeFiles/edit_cache.dir
+C:/MY WORKS/ONGOING PROJECTS/SATA TECHNOLOGIES/CuttingEdge/android/app/.cxx/RelWithDebInfo/2w1nlv2n/x86/CMakeFiles/rebuild_cache.dir

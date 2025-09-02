@@ -1,0 +1,2 @@
+C:/MY WORKS/ONGOING PROJECTS/SATA TECHNOLOGIES/cmit_mobile/android/app/.cxx/RelWithDebInfo/314z5d5o/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/MY WORKS/ONGOING PROJECTS/SATA TECHNOLOGIES/cmit_mobile/android/app/.cxx/RelWithDebInfo/314z5d5o/armeabi-v7a/CMakeFiles/rebuild_cache.dir
