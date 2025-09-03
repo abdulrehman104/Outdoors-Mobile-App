@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'check_in_success_screen.dart';
 
 class SelfieVerificationScreen extends StatelessWidget {
   const SelfieVerificationScreen({super.key});
@@ -192,7 +193,14 @@ class SelfieVerificationScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CheckInSuccessScreen(),
+                    ),
+                  );
+                },
                 child: const Text(
                   "Capture & Confirm",
                   style: TextStyle(color: Colors.white, fontSize: 16),
