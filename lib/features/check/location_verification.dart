@@ -16,7 +16,7 @@ class LocationVerificationScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          "Check In Process",
+          "",
           style: TextStyle(color: Colors.white, fontSize: 16),
         ),
         centerTitle: true,
@@ -24,7 +24,7 @@ class LocationVerificationScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(right: 12),
             child: Text(
-              "Step 1 of 3",
+              "Check In Process",
               style: TextStyle(color: Colors.white70, fontSize: 14),
             ),
           ),
@@ -35,6 +35,21 @@ class LocationVerificationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Progress Text
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Progress",
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+                Text(
+                  "Step 1 of 3",
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
             // Progress Bar
             Container(
               height: 4,
