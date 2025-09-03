@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'selfie_verification.dart'; // Import the SelfieVerificationScreen
 
-class LocationVerificationScreen extends StatelessWidget {
-  const LocationVerificationScreen({super.key});
+class SelfieVerificationScreen extends StatelessWidget {
+  const SelfieVerificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,6 @@ class LocationVerificationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Progress Text
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
@@ -45,13 +43,12 @@ class LocationVerificationScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white70, fontSize: 14),
                 ),
                 Text(
-                  "Step 1 of 3",
+                  "Step 2 of 3",
                   style: TextStyle(color: Colors.white70, fontSize: 14),
                 ),
               ],
             ),
             const SizedBox(height: 8),
-            // Progress Bar
             Container(
               height: 4,
               width: double.infinity,
@@ -63,7 +60,7 @@ class LocationVerificationScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Container(
                   height: 4,
-                  width: MediaQuery.of(context).size.width * 0.33,
+                  width: MediaQuery.of(context).size.width * 0.66,
                   decoration: BoxDecoration(
                     color: const Color(0xFF61181D),
                     borderRadius: BorderRadius.circular(10),
@@ -72,7 +69,6 @@ class LocationVerificationScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            // Property Details
             const Text(
               "Oakwood Apartments",
               style: TextStyle(
@@ -90,14 +86,13 @@ class LocationVerificationScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 30),
-            // Location Verification
             const Center(
               child: Column(
                 children: [
-                  Icon(Icons.location_pin, color: Colors.green, size: 48),
+                  Icon(Icons.camera_alt, color: Colors.green, size: 48),
                   SizedBox(height: 12),
                   Text(
-                    "Location Verification",
+                    "Selfie Verification",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -105,7 +100,7 @@ class LocationVerificationScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 6),
                   Text(
-                    "We Need To Verify You’re At The Correct Property Location.",
+                    "Take a Selfie to Verify Check-In at This Location",
                     style: TextStyle(color: Colors.white54, fontSize: 13),
                     textAlign: TextAlign.center,
                   ),
@@ -113,7 +108,6 @@ class LocationVerificationScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 28),
-            // Map Preview Box with Custom Dotted Border
             Center(
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.60,
@@ -123,73 +117,71 @@ class LocationVerificationScreen extends StatelessWidget {
                   child: Container(
                     color: Colors.transparent,
                     child: const Center(
-                      child: Icon(Icons.navigation, size: 42, color: Colors.green),
+                      child: Icon(Icons.camera, size: 42, color: Colors.green),
                     ),
                   ),
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            // Geofence Status + Distance From Property
             Center(
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 70),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0xFF466B00),
-                        width: 3,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.info_outline, color: Colors.white, size: 18),
-                        SizedBox(width: 4),
-                        Text(
-                          "Within Geofence",
-                          style: TextStyle(
-                              color: Color(0xFF466B00),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        SizedBox(width: 4),
-                        Icon(Icons.check_circle,
-                            color: Color(0xFF466B00), size: 18),
-                      ],
-                    ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 60),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xFF466B00),
+                    width: 3,
                   ),
-                  const SizedBox(height: 6),
-                  RichText(
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Distance From Property: ",
-                          style: TextStyle(
-                            color: Color(0xFF888888),
-                            fontSize: 11,
-                          ),
-                        ),
-                        WidgetSpan(
-                          child: SizedBox(width: 100),
-                        ),
-                        TextSpan(
-                          text: "8km away",
-                          style: TextStyle(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.info_outline, color: Colors.white, size: 18),
+                    SizedBox(width: 4),
+                    Flexible(
+                      child: Text(
+                        "Position your face within the circle frame and tap capture.",
+                        style: TextStyle(
                             color: Color(0xFF466B00),
-                            fontSize: 11,
-                          ),
-                        ),
-                      ],
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(width: 4),
+                    Icon(Icons.check_circle, color: Color(0xFF466B00), size: 18),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 90), // Adjusted spacing instead of Spacer
-            // Continue Button
+            const SizedBox(height: 8),
+            Center(
+              child: RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Distance From Property: ",
+                      style: TextStyle(
+                        color: Color(0xFF888888),
+                        fontSize: 11,
+                      ),
+                    ),
+                    WidgetSpan(
+                      child: SizedBox(width: 140),
+                    ),
+                    TextSpan(
+                      text: "8km away",
+                      style: TextStyle(
+                        color: Color(0xFF466B00),
+                        fontSize: 11,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 100),
             SizedBox(
               width: double.infinity,
               height: 50,
@@ -200,22 +192,14 @@ class LocationVerificationScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {
-                  // Navigate to SelfieVerificationScreen
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SelfieVerificationScreen(),
-                    ),
-                  );
-                },
+                onPressed: () {},
                 child: const Text(
-                  "Continue to Selfie",
+                  "Capture & Confirm",
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ),
-            const SizedBox(height: 20), // Optional bottom padding
+            const SizedBox(height: 20),
           ],
         ),
       ),
