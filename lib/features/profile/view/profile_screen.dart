@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cuttingedge/features/check/location_verification.dart'; // Import the LocationVerificationScreen
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -24,10 +25,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
         title: const Text(
           "Profile",
           style: TextStyle(
@@ -60,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   right: 0,
                   child: CircleAvatar(
                     radius: 16,
-                    backgroundColor: const Color(0xFF466B00),
+                    backgroundColor: const Color(0xFF61181D),
                     child: const Icon(Icons.edit, size: 16, color: Colors.white),
                   ),
                 ),
@@ -93,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   // Handle save
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF466B00),
+                  backgroundColor: const Color(0xFF61181D),
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -104,7 +101,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
-            )
+            ),
+
+            const SizedBox(height: 16),
+
+            // Verification Button
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LocationVerificationScreen(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF466B00), // Green to match location theme
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text(
+                  "Verify Location",
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -176,7 +201,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(right: 14),
                 child: Text(
                   "Change",
-                  style: TextStyle(color: Color(0xFF466B00), fontSize: 14),
+                  style: TextStyle(color: Color(0xFF61181D), fontSize: 14),
                 ),
               ),
             ),
