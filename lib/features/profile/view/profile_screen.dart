@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cuttingedge/features/check/location_verification.dart'; // Import the LocationVerificationScreen
+import 'package:cuttingedge/features/check/verification_screen.dart'; // Import the LocationVerificationScreen
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -113,7 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const LocationVerificationScreen(),
+                      builder: (context) => const VerificationScreen(),
                     ),
                   );
                 },
