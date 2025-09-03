@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(
                         onPressed: _login,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF466B00),
+                          backgroundColor: const Color(0xFF61181D),
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -171,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: const Text(
                               "Sign Up",
                               style: TextStyle(
-                                color: Color(0xFF466B00),
+                                color: Color(0xFF61181D),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

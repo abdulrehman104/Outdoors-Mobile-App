@@ -3,6 +3,7 @@ import 'chat_detail_screen.dart'; // Import the ChatDetailScreen
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -60,6 +61,8 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: const Color(0xFF0A0A0A),
         foregroundColor: Colors.white,
         elevation: 0,
+        scrolledUnderElevation: 0, // Prevent elevation change on scroll
+        surfaceTintColor: Colors.transparent, // Avoid tinting
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,9 +71,8 @@ class _ChatScreenState extends State<ChatScreen> {
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: const Color(0xFF1A1A1A),
+              color: const Color(0xFF61181D), // Tab bar color
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.white.withOpacity(0.1)),
             ),
             child: Row(
               children: List.generate(tabs.length, (index) {
@@ -86,9 +88,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         color: isSelected ? const Color(0xFF0B1209) : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
-                        border: isSelected
-                            ? Border.all(color: const Color(0xFF4A7C24), width: 1.5)
-                            : null,
                       ),
                       alignment: Alignment.center,
                       child: Text(
@@ -232,7 +231,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       ],
                     ),
                     onTap: () {
-                      // Navigate to ChatDetailScreen
                       Navigator.push(
                         context,
                         MaterialPageRoute(

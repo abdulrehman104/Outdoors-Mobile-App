@@ -78,7 +78,7 @@ class _NotificationScreenState extends State<NotificationScreen>
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFF1A1A1A),
+              color: const Color(0xFF61181D), // Updated tab bar color
               borderRadius: BorderRadius.circular(8),
             ),
             child: TabBar(

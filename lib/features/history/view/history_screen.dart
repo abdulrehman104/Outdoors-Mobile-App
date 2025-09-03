@@ -134,7 +134,7 @@ class HistoryCard extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: isCompleted ? const Color(0xFF466B00) : Colors.grey[700],
+                backgroundColor: isCompleted ? const Color(0xFF61181D) : Colors.grey[700],
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

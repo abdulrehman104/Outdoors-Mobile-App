@@ -62,9 +62,9 @@ class HomeTopSection extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 16), // Consistent margin with task cards
             padding: const EdgeInsets.all(16), // Updated padding to match task cards
             decoration: BoxDecoration(
-              color: const Color(0x14466B00), // Transparent green background
+              color: const Color(0xFF61181D), // Transparent green background
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: const Color(0x1A466B00), width: 2), // Transparent green border
+              border: Border.all(color: const Color(0xFF61181D), width: 2), // Transparent green border
               boxShadow: [
                 BoxShadow(
                   color: const Color(0x1A466B00), // Subtle green glow
@@ -85,7 +85,7 @@ class HomeTopSection extends StatelessWidget {
                 LinearProgressIndicator(
                   value: 0.0,
                   backgroundColor: Colors.white24,
-                  color: const Color(0xFF466B00), // Green progress
+                  color: const Color(0xFF61181D), // Green progress
                   minHeight: 6,
                   borderRadius: BorderRadius.circular(4),
                 ),
@@ -191,7 +191,7 @@ class HomeTopSection extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF466B00), // Solid green
+                backgroundColor: const Color(0xFF61181D), // Solid green
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
