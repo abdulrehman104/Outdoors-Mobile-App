@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'start_task.dart';
 
 class CheckInSuccessScreen extends StatelessWidget {
   const CheckInSuccessScreen({super.key});
@@ -176,7 +177,13 @@ class CheckInSuccessScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  // TODO: Navigate to task screen
+                    Navigator.push(
+                            context,
+                      MaterialPageRoute(
+                        builder: (context) => const StartTaskScreen(),
+                  ),
+                          );
+
                 },
                 child: const Text(
                   "Start Tasks",
