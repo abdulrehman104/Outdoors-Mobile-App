@@ -125,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 child: const Text(
-                  "Verify Location",
+                  "Verify ",
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),

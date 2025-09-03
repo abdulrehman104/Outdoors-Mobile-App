@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'success.dart'; // Import the SuccessScreen
 
 class StartTaskScreen extends StatefulWidget {
   const StartTaskScreen({super.key});
@@ -199,8 +200,14 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                   ),
                   onPressed: completedRequiredCount == requiredCount
                       ? () {
-                    print("All tasks completed");
-                    // Print all notes for demonstration
+                    // Navigate to SuccessScreen when all required tasks are completed
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SuccessScreen(),
+                      ),
+                    );
+                    // Optional: Print notes for debugging
                     for (int i = 0; i < tasks.length; i++) {
                       print("Task ${i + 1} notes: ${tasks[i]["notes"]}");
                     }
@@ -284,13 +291,11 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
           ],
         ),
         const SizedBox(height: 4),
-
         Text(
           subtitle,
           style: const TextStyle(color: Colors.white70, fontSize: 13),
         ),
         const SizedBox(height: 8),
-
         // Media buttons positioned above the notes field - centered
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -301,7 +306,6 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
           ],
         ),
         const SizedBox(height: 20),
-
         // Compact notes text field with smaller height
         SizedBox(
           height: 80, // Fixed height to match the image
