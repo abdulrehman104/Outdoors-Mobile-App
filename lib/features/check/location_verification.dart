@@ -136,7 +136,7 @@ class LocationVerificationScreen extends StatelessWidget {
                           "Within Geofence",
                           style: TextStyle(
                               color: Color(0xFF466B00),
-                              fontSize: 14, // keep original size
+                              fontSize: 14,
                               fontWeight: FontWeight.w500),
                         ),
                         SizedBox(width: 4),
@@ -146,11 +146,27 @@ class LocationVerificationScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 6),
-                  const Text(
-                    "Distance From Property: 8km away",
-                    style: TextStyle(
-                      color: Color(0xFF888888),
-                      fontSize: 11, // smaller only here
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "Distance From Property: ",
+                          style: TextStyle(
+                            color: Color(0xFF888888), // Original color
+                            fontSize: 11,
+                          ),
+                        ),
+                        WidgetSpan(
+                          child: SizedBox(width: 100), // Increased spacing
+                        ),
+                        TextSpan(
+                          text: "8km away",
+                          style: TextStyle(
+                            color: Color(0xFF466B00), // Geofence color
+                            fontSize: 11,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
