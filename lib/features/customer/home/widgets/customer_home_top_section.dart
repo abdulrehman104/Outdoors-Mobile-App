@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:cuttingedge/features/home/view/notification_screen.dart';
-
 class CustomerHomeTopSection extends StatelessWidget {
   const CustomerHomeTopSection({super.key});
 
@@ -12,199 +10,310 @@ class CustomerHomeTopSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// Greeting with Notification and Logout Icons
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Good Morning, John",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.notifications, color: Colors.white),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const NotificationScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.logout, color: Colors.white),
-                    onPressed: () {
-                      // Placeholder for logout functionality
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Logout pressed")),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ],
+          /// Header Greeting
+          const Text(
+            "Hello, Jason",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(height: 4),
           const Text(
-            "Ready To Start Your Workday?",
-            style: TextStyle(color: Colors.white70),
+            "Welcome Back To Your Property Dashboard",
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 14,
+            ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 24),
 
-          /// Progress Bar
+          /// Today's Summary Section with Border Container
           Container(
-            margin: const EdgeInsets.only(bottom: 16), // Consistent margin with task cards
-            padding: const EdgeInsets.all(16), // Updated padding to match task cards
             decoration: BoxDecoration(
-              color: const Color(0xFF61181D), // Transparent green background
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: const Color(0xFF61181D), width: 2), // Transparent green border
+              color: const Color(0x14466B00),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: const Color(0x1A466B00), width: 2),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0x1A466B00), // Subtle green glow
-                  blurRadius: 8,
+                  color: const Color(0x1A466B00),
+                  blurRadius: 300,
                   spreadRadius: 2,
                   offset: const Offset(0, 2),
                 ),
               ],
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Today's Progress",
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 8),
-                LinearProgressIndicator(
-                  value: 0.0,
-                  backgroundColor: Colors.white24,
-                  color: const Color(0xFF61181D), // Green progress
-                  minHeight: 6,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                const SizedBox(height: 8),
-                const Text("0 of 3 Completed", style: TextStyle(color: Colors.white70)),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Today's Summary",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  _buildSummaryCard(
+                    "Tasks Completed Today",
+                    "5",
+                    Icons.check_circle,
+                  ),
+                  const SizedBox(height: 6),
+                  _buildSummaryCard(
+                    "Pending Invoices",
+                    "\$450",
+                    Icons.receipt,
+                  ),
+                  const SizedBox(height: 6),
+                  _buildSummaryCard(
+                    "Active Properties",
+                    "3",
+                    Icons.home,
+                  ),
+                ],
+              ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 24),
 
-          /// Task Cards
-          _buildTaskCard(
-            context,
-            title: "Oakwood Apartments",
-            address: "123 Oak Street, Unit 48",
-            time: "9:00 AM – 11:00 AM",
-            tasks: "5 Tasks • 0.3 Miles Away",
+          /// Recent Services Section with Border Container
+          Container(
+            decoration: BoxDecoration(
+              color: const Color(0x14466B00),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: const Color(0x1A466B00), width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x1A466B00),
+                  blurRadius: 300,
+                  spreadRadius: 2,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Recent Services",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "View All",
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  _buildServiceCard(
+                    "Sunset Villa Apartment",
+                    "Plumbing • 8 May 5 Tasks",
+                    "Completed",
+                    const Color(0xFF61181D),
+                  ),
+                  _buildServiceCard(
+                    "Downtown Office Complex",
+                    "Electrical • 7 May 3 Tasks",
+                    "Completed",
+                    const Color(0xFF61181D),
+                  ),
+                  _buildServiceCard(
+                    "Garden View Residence",
+                    "Cleaning • 6 May 4 Tasks",
+                    "Pending",
+                    const Color(0xFF515151),
+                  ),
+                ],
+              ),
+            ),
           ),
-          _buildTaskCard(
-            context,
-            title: "Sunset Gardens",
-            address: "123 Oak Street, Unit 48",
-            time: "9:00 AM – 11:00 AM",
-            tasks: "6 Tasks • 0.3 Miles Away",
+          const SizedBox(height: 24),
+
+          /// Quick Actions Section
+          const Text(
+            "Quick Actions",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-          _buildTaskCard(
-            context,
-            title: "Metro Plaza",
-            address: "123 Oak Street, Unit 48",
-            time: "9:00 AM – 11:00 AM",
-            tasks: "5 Tasks • 0.3 Miles Away",
+          const SizedBox(height: 16),
+
+          /// Action Buttons
+          Row(
+            children: [
+              Expanded(
+                child: _buildActionButton(
+                  "Report Issue",
+                  Icons.report_problem_outlined,
+                      () {},
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _buildActionButton(
+                  "Pay Invoice",
+                  Icons.payment_outlined,
+                      () {},
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 
-  /// Task Card
-  Widget _buildTaskCard(
-      BuildContext context, {
-        required String title,
-        required String address,
-        required String time,
-        required String tasks,
-      }) {
+  /// Summary Card Widget
+  Widget _buildSummaryCard(String title, String value, IconData icon) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Icon(icon, color: const Color(0xFF76B500), size: 20),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            value,
+            style: const TextStyle(
+              color: Color(0xFF76B500),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Service Card Widget
+  Widget _buildServiceCard(String title, String subtitle, String status, Color statusColor) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  subtitle,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 11,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: statusColor,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: statusColor),
+            ),
+            child: Text(
+              status,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Action Button Widget
+  Widget _buildActionButton(String label, IconData icon, VoidCallback onPressed) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0x14466B00), // Transparent green background
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0x1A466B00), width: 2), // Transparent green border
+        color: const Color(0x14466B00),
+        borderRadius: BorderRadius.circular(20), // Match radius with other containers
+        border: Border.all(color: const Color(0x1A466B00), width: 2), // Single border
         boxShadow: [
           BoxShadow(
-            color: const Color(0x1A466B00), // Subtle green glow
+            color: const Color(0x1A466B00),
             blurRadius: 8,
             spreadRadius: 2,
             offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// Title + Status
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(title,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20), // Match radius for ripple effect
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(20), // Match radius for ripple effect
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Icon(icon, color: Colors.white70, size: 20),
+                const SizedBox(height: 8),
+                Text(
+                  label,
                   style: const TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold)),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.grey[800],
-                  borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                child: const Text("Pending",
-                    style: TextStyle(color: Colors.white70, fontSize: 12)),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-
-          /// Address & Time
-          Text(address, style: const TextStyle(color: Colors.white70, fontSize: 13)),
-          Text(time, style: const TextStyle(color: Colors.white70, fontSize: 13)),
-          const SizedBox(height: 8),
-
-          /// Tasks
-          Row(
-            children: [
-              const Icon(Icons.list, size: 16, color: Colors.white70),
-              const SizedBox(width: 6),
-              Text(tasks, style: const TextStyle(color: Colors.white70)),
-            ],
-          ),
-          const SizedBox(height: 12),
-
-          /// Button
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF61181D), // Solid green
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              icon: const Icon(Icons.lock_open, color: Colors.white),
-              label: const Text(
-                "Check In & Start Task",
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-              ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
