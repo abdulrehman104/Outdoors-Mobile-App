@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cuttingedge/config/routes.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class CustomerLoginScreen extends StatefulWidget {
+  const CustomerLoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<CustomerLoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<CustomerLoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       Navigator.pushNamedAndRemoveUntil(
         context,
-        Routes.home,
+        Routes.customerHome, // Updated to customer home route
             (route) => false,
       );
     }
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 8),
                     const Text(
-                      "Log in to view your tasks and start your workday.",
+                      "Log in to view your services and manage your account.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, Routes.signup);
+                              Navigator.pushNamed(context, Routes.customerSignup); // Updated to customer signup route
                             },
                             child: const Text(
                               "Sign Up",

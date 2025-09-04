@@ -56,8 +56,7 @@ class OnboardingScreen extends StatelessWidget {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
                                     ),
-                                    padding:
-                                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                                 ),
                                 child: const Text(
                                     "Choose Your Role To Get Started",
@@ -74,11 +73,10 @@ class OnboardingScreen extends StatelessWidget {
                             _buildRoleCard(
                                 context,
                                 title: "Customer",
-                                subtitle:
-                                "View Completed Services, Submit Complaints,\nAnd Manage Payments.",
+                                subtitle: "View Completed Services, Submit Complaints,\nAnd Manage Payments.",
                                 buttonLabel: "Continue",
                                 onPressed: () {
-                                    Navigator.pushNamed(context, Routes.login);
+                                    Navigator.pushNamed(context, Routes.customerLogin); // Updated to customer login route
                                 },
                             ),
 
@@ -88,11 +86,10 @@ class OnboardingScreen extends StatelessWidget {
                             _buildRoleCard(
                                 context,
                                 title: "Worker",
-                                subtitle:
-                                "Access Your Daily Assignments, Check-In/Out,\nAnd Complete Tasks.",
+                                subtitle: "Access Your Daily Assignments, Check-In/Out,\nAnd Complete Tasks.",
                                 buttonLabel: "Continue",
                                 onPressed: () {
-                                    Navigator.pushNamed(context, Routes.login);
+                                    Navigator.pushNamed(context, Routes.login); // Worker stays on original login route
                                 },
                             ),
                         ],
@@ -150,8 +147,7 @@ class OnboardingScreen extends StatelessWidget {
                             onPressed: onPressed,
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF61181D),
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                 ),

@@ -7,12 +7,18 @@ import 'package:cuttingedge/features/home/view/home_screen.dart';
 import 'package:cuttingedge/features/history/view/history_screen.dart';
 import 'package:cuttingedge/features/profile/view/profile_screen.dart';
 import 'package:cuttingedge/features/profile/view/edit_profile_screen.dart';
+import 'package:cuttingedge/features/customer/auth/view/customer_login_screen.dart';
+import 'package:cuttingedge/features/customer/auth/view/customer_signup_screen.dart';
+import 'package:cuttingedge/features/customer/home/view/customer_home_screen.dart';
 
 class Routes {
   /// ✅ **Define Route Names**
   static const String initial = '/';
   static const String welcome = '/welcome';
   static const String login = '/subscription';
+  static const String customerLogin = '/customer_login';
+  static const String customerSignup = '/customer_signup';
+  static const String customerHome = '/customer_home'; // Added customer home route
   static const String signup = '/signup';
   static const String forgotPassword = '/forgot-password';
   static const String otpVerification = '/otp-verification';
@@ -32,6 +38,9 @@ class Routes {
       initial: (context) => SplashScreen(),
       welcome: (context) => OnboardingScreen(),
       login: (context) => LoginScreen(),
+      customerLogin: (context) => CustomerLoginScreen(),
+      customerSignup: (context) => CustomerSignupScreen(),
+      customerHome: (context) => CustomerHomeScreen(), // Added customer home route
       signup: (context) => SignUpScreen(),
       home: (context) => HomeScreen(),
       bookings: (context) => WorkHistoryScreen(),
@@ -51,6 +60,12 @@ class Routes {
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
       case Routes.login:
         return MaterialPageRoute(builder: (_) => LoginScreen());
+      case Routes.customerLogin:
+        return MaterialPageRoute(builder: (_) => CustomerLoginScreen());
+      case Routes.customerSignup:
+        return MaterialPageRoute(builder: (_) => CustomerSignupScreen());
+      case Routes.customerHome: // Added customer home case
+        return MaterialPageRoute(builder: (_) => CustomerHomeScreen());
       case Routes.signup:
         return MaterialPageRoute(builder: (_) => SignUpScreen());
       case Routes.home:

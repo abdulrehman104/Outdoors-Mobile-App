@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomBottomNavBar extends StatelessWidget {
+class CustomerCustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
 
-  const CustomBottomNavBar({
+  const CustomerCustomBottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
@@ -29,8 +29,8 @@ class CustomBottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _buildNavItem(Icons.home_outlined, Icons.home, "Home", 0),
-          _buildNavItem(Icons.history_outlined, Icons.history, "History", 1),
-          _buildNavItem(Icons.chat_bubble_outline, Icons.chat_bubble, "Chats", 2),
+          _buildNavItem(Icons.history_outlined, Icons.history, "Invoices", 1), // Changed History to Invoices
+          _buildNavItem(Icons.chat_bubble_outline, Icons.chat_bubble, "Messages", 2), // Changed Chats to Messages
           _buildNavItem(Icons.person_outline, Icons.person, "Profile", 3),
         ],
       ),

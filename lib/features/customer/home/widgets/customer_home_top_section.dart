@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:cuttingedge/features/home/view/notification_screen.dart';
 
-class HomeTopSection extends StatelessWidget {
-  const HomeTopSection({super.key});
+class CustomerHomeTopSection extends StatelessWidget {
+  const CustomerHomeTopSection({super.key});
 
   @override
   Widget build(BuildContext context) {

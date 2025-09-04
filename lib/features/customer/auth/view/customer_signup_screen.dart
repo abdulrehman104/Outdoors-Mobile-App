@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cuttingedge/config/routes.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class CustomerSignupScreen extends StatefulWidget {
+  const CustomerSignupScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<CustomerSignupScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends State<CustomerSignupScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _firstNameController = TextEditingController();
@@ -31,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (_formKey.currentState!.validate()) {
       Navigator.pushNamedAndRemoveUntil(
         context,
-        Routes.home,
+        Routes.customerHome, // Updated to customer home route
             (route) => false,
       );
     }
@@ -60,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               const SizedBox(height: 8),
               const Text(
-                "Sign up to view your tasks and start your workday.",
+                "Sign up to manage your services and account.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14,
@@ -78,7 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     _buildInputField(
                       label: "First Name",
-                      hint: "Your name",
+                      hint: "Your first name",
                       controller: _firstNameController,
                     ),
                     const SizedBox(height: 16),
@@ -185,7 +185,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, Routes.login);
+                      Navigator.pushNamed(context, Routes.customerLogin); // Updated to customer login route
                     },
                     child: const Text(
                       "Sign In",
@@ -240,6 +240,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Color(0xFF466B00)),
             ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: Colors.red),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: Colors.red),
+            ),
             suffixIcon: toggle != null
                 ? IconButton(
               icon: Icon(
@@ -250,8 +258,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
             )
                 : null,
           ),
-          validator: (value) =>
-          value == null || value.isEmpty ? "Please enter $label" : null,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "Please enter $label";
+            }
+            if (label == "Email Address" &&
+                !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+              return "Please enter a valid email";
+            }
+            return null;
+          },
         ),
       ],
     );
