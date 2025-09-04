@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cuttingedge/features/customer/home/widgets/customer_home_top_section.dart';
 import 'package:cuttingedge/features/customer/home/widgets/customer_custom_bottom_nav_bar.dart';
 import 'package:cuttingedge/features/customer/invoices/view/invoices_screen.dart';
-import 'package:cuttingedge/features/profile/view/profile_screen.dart';
-import 'package:cuttingedge/features/chat/view/chat_screen.dart';
+import 'package:cuttingedge/features/customer/profile/view/customer_profile_screen.dart';
+import 'package:cuttingedge/features/customer/messages/view/messages_screen.dart';
 
 class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
@@ -34,8 +34,8 @@ class _HomeScreenState extends State<CustomerHomeScreen> {
         ),
       ),
       const InvoicesScreen(),
-      const ChatScreen(),
-      const ProfileScreen(),
+      const MessagesScreen(),
+      const CustomerProfileScreen(),
     ];
 
     return Scaffold(

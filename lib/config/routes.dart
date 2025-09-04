@@ -29,7 +29,7 @@ class Routes {
   static const String bookings = '/bookings';
   static const String profile = '/profile';
   static const String editProfile = '/edit-profile';
-  static const String chat = '/chat';
+  static const String chat = '/messages';
   static const String generatedVouchers = '/generated-vouchers';
 
   /// ✅ **Define Named Routes**
