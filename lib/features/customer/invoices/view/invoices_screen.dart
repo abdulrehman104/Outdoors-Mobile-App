@@ -15,7 +15,7 @@ class InvoicesScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // Outstanding and Paid Section (Above Container)
             Row(
-              mainAxisAlignment: MainAxisAlignment.center, // Center the columns
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Outstanding Column
                 Column(
@@ -24,10 +24,11 @@ class InvoicesScreen extends StatelessWidget {
                     const Text(
                       "\$450",
                       style: TextStyle(
-                        color: Colors.red,
+                        color: Color(0xFF61181D),
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
+                      semanticsLabel: "Outstanding amount: 450 dollars",
                     ),
                     const SizedBox(height: 6),
                     const Text(
@@ -39,7 +40,7 @@ class InvoicesScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(width: 190), // Increased gap between Outstanding and Paid
+                const SizedBox(width: 190),
                 // Paid Column
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -47,10 +48,11 @@ class InvoicesScreen extends StatelessWidget {
                     const Text(
                       "2",
                       style: TextStyle(
-                        color: Color(0xFF76B500),
+                        color: Color(0xFF466B00), // Updated from 0xFF76B500
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
+                      semanticsLabel: "2 invoices paid",
                     ),
                     const SizedBox(height: 6),
                     const Text(
@@ -69,9 +71,17 @@ class InvoicesScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF111111),
+                color: const Color(0x14466B00), // Updated from 0x14466B00 (no change needed here as it already uses 466B00)
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white12, width: 1),
+                border: Border.all(color: const Color(0x1A466B00), width: 2),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0x1A466B00),
+                    blurRadius: 300,
+                    spreadRadius: 2,
+                    offset: Offset(0, 2),
+                  ),
+                ],
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,13 +96,14 @@ class InvoicesScreen extends StatelessWidget {
                           color: Colors.white,
                           fontSize: 13,
                         ),
+                        semanticsLabel: "Pay All Outstanding",
                       ),
                       const SizedBox(height: 4),
                       const Text(
                         "Save time with one payment",
                         style: TextStyle(
                           color: Colors.white70,
-                          fontSize: 7,
+                          fontSize: 12,
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -102,7 +113,7 @@ class InvoicesScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF76B500),
+                      backgroundColor: const Color(0xFF466B00), // Updated from 0xFF76B500
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -111,6 +122,7 @@ class InvoicesScreen extends StatelessWidget {
                     child: const Text(
                       "Pay \$450",
                       style: TextStyle(color: Colors.white, fontSize: 13),
+                      semanticsLabel: "Pay 450 dollars",
                     ),
                   ),
                 ],
@@ -121,9 +133,17 @@ class InvoicesScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF111111),
+                color: const Color(0x14466B00), // Updated from 0x14466B00 (no change needed here)
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white12, width: 1),
+                border: Border.all(color: const Color(0x1A466B00), width: 2),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0x1A466B00),
+                    blurRadius: 300,
+                    spreadRadius: 2,
+                    offset: Offset(0, 2),
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,38 +155,43 @@ class InvoicesScreen extends StatelessWidget {
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
+                    semanticsLabel: "All Invoices Section",
                   ),
                   const SizedBox(height: 16),
                   InvoiceCard(
                     invoiceNumber: "INV-001",
+                    subheading: "Sunset Villa Apartment",
                     amount: "\$150",
                     dueDate: "Due: Jan 5, 2025",
                     status: "Unpaid",
-                    statusColor: Colors.red,
+                    statusColor: const Color(0xFF61181D),
                   ),
                   const SizedBox(height: 12),
                   InvoiceCard(
                     invoiceNumber: "INV-002",
+                    subheading: "Sunset Villa Apartment",
                     amount: "\$300",
                     dueDate: "Due: Jan 5, 2025",
                     status: "Unpaid",
-                    statusColor: Colors.red,
+                    statusColor: const Color(0xFF61181D),
                   ),
                   const SizedBox(height: 12),
                   InvoiceCard(
                     invoiceNumber: "INV-003",
+                    subheading: "Sunset Villa Apartment",
                     amount: "\$80",
                     dueDate: "Due: Dec 26, 2024",
                     status: "Paid",
-                    statusColor: const Color(0xFF76B500),
+                    statusColor: const Color(0xFF466B00), // Updated from 0xFF76B500
                   ),
                   const SizedBox(height: 12),
                   InvoiceCard(
                     invoiceNumber: "INV-004",
+                    subheading: "Sunset Villa Apartment",
                     amount: "\$120",
                     dueDate: "Due: Dec 30, 2024",
                     status: "Paid",
-                    statusColor: const Color(0xFF76B500),
+                    statusColor: const Color(0xFF466B00), // Updated from 0xFF76B500
                   ),
                 ],
               ),
@@ -180,6 +205,7 @@ class InvoicesScreen extends StatelessWidget {
 
 class InvoiceCard extends StatelessWidget {
   final String invoiceNumber;
+  final String subheading;
   final String amount;
   final String dueDate;
   final String status;
@@ -188,6 +214,7 @@ class InvoiceCard extends StatelessWidget {
   const InvoiceCard({
     super.key,
     required this.invoiceNumber,
+    required this.subheading,
     required this.amount,
     required this.dueDate,
     required this.status,
@@ -199,7 +226,6 @@ class InvoiceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFF111111),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -216,21 +242,17 @@ class InvoiceCard extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
+                semanticsLabel: "Invoice $invoiceNumber",
               ),
               const SizedBox(height: 4),
               Text(
-                dueDate,
+                subheading,
                 style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 12,
                 ),
               ),
-            ],
-          ),
-          // Right Section
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
+              const SizedBox(height: 4),
               Text(
                 amount,
                 style: const TextStyle(
@@ -239,7 +261,12 @@ class InvoiceCard extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: 6),
+            ],
+          ),
+          // Right Section
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
@@ -253,6 +280,14 @@ class InvoiceCard extends StatelessWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                dueDate,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 12,
                 ),
               ),
             ],
