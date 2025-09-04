@@ -48,11 +48,12 @@ class OnboardingScreen extends StatelessWidget {
 
                             const SizedBox(height: 30),
 
-                            /// ✅ Choose Role Button (not functional, just heading)
+                            /// ✅ Choose Role Button with Fill Color
                             OutlinedButton(
                                 onPressed: () {},
                                 style: OutlinedButton.styleFrom(
-                                    side: const BorderSide(color: Color(0xFF466B00)),
+                                    backgroundColor: const Color(0xFF61181D), // ✅ Dark green fill color
+                                    side: const BorderSide(color: Color(0xFF61181D)), // Matching border
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
                                     ),
@@ -62,7 +63,7 @@ class OnboardingScreen extends StatelessWidget {
                                     "Choose Your Role To Get Started",
                                     style: TextStyle(
                                         fontSize: 14,
-                                        color: Colors.white,
+                                        color: Colors.white, // White text for contrast
                                     ),
                                 ),
                             ),
@@ -78,6 +79,7 @@ class OnboardingScreen extends StatelessWidget {
                                 onPressed: () {
                                     Navigator.pushNamed(context, Routes.customerLogin); // Updated to customer login route
                                 },
+                                icon: Icons.person, // Icon for Customer
                             ),
 
                             const SizedBox(height: 20),
@@ -91,6 +93,7 @@ class OnboardingScreen extends StatelessWidget {
                                 onPressed: () {
                                     Navigator.pushNamed(context, Routes.login); // Worker stays on original login route
                                 },
+                                icon: Icons.work, // Icon for Worker
                             ),
                         ],
                     ),
@@ -106,6 +109,7 @@ class OnboardingScreen extends StatelessWidget {
             required String subtitle,
             required String buttonLabel,
             required VoidCallback onPressed,
+            required IconData icon, // Icon parameter
         }) {
         return Container(
             padding: const EdgeInsets.all(16),
@@ -117,24 +121,40 @@ class OnboardingScreen extends StatelessWidget {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    /// Title
-                    Text(
-                        title,
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                        ),
+                    /// Title with Icon
+                    Row(
+                        children: [
+                            Icon(
+                                icon,
+                                color: const Color(0xFF466B00), // Updated icon color to dark green
+                                size: 32,
+                            ),
+                            const SizedBox(width: 8),
+                            Padding(
+                                padding: const EdgeInsets.only(left: 8.0), // Added padding to shift title right
+                                child: Text(
+                                    title,
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                    ),
+                                ),
+                            ),
+                        ],
                     ),
 
                     const SizedBox(height: 8),
 
                     /// Subtitle
-                    Text(
-                        subtitle,
-                        style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.white70,
+                    Padding(
+                        padding: const EdgeInsets.only(left: 44.0), // Added padding to shift subtitle right
+                        child: Text(
+                            subtitle,
+                            style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.white70,
+                            ),
                         ),
                     ),
 
