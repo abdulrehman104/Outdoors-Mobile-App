@@ -5,60 +5,174 @@ class InvoicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Invoice Summary Section
-          Text(
-            "Invoice Summary",
-            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
-          ),
-          SizedBox(height: 6),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: LinearProgressIndicator(
-              value: 2 / 3,
-              minHeight: 8,
-              backgroundColor: Colors.grey[800],
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF466B00)),
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 24),
+            // Outstanding and Paid Section (Above Container)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center, // Center the columns
+              children: [
+                // Outstanding Column
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "\$450",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    const Text(
+                      "Outstanding",
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 190), // Increased gap between Outstanding and Paid
+                // Paid Column
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      "2",
+                      style: TextStyle(
+                        color: Color(0xFF76B500),
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    const Text(
+                      "Paid",
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ),
-          SizedBox(height: 6),
-          Text(
-            "2 of 3 Invoices Paid",
-            style: TextStyle(color: Colors.white70, fontSize: 13),
-          ),
-          SizedBox(height: 20),
-          // Invoice Cards Section
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              InvoiceCard(
-                invoiceNumber: "INV-001",
-                service: "Lawn Maintenance",
-                amount: "\$150.00",
-                dueDate: "2025-09-10",
-                status: "Paid",
+            const SizedBox(height: 24),
+            // Invoice Summary Section (Container with Pay All Outstanding and Pay Button)
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF111111),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.white12, width: 1),
               ),
-              InvoiceCard(
-                invoiceNumber: "INV-002",
-                service: "Tree Trimming",
-                amount: "\$200.00",
-                dueDate: "2025-09-15",
-                status: "Paid",
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Pay All Outstanding Text (Left Side)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Pay All Outstanding",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      const Text(
+                        "Save time with one payment",
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 7,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Pay Button (Right Side)
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF76B500),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text(
+                      "Pay \$450",
+                      style: TextStyle(color: Colors.white, fontSize: 13),
+                    ),
+                  ),
+                ],
               ),
-              InvoiceCard(
-                invoiceNumber: "INV-003",
-                service: "Garden Cleanup",
-                amount: "\$100.00",
-                dueDate: "2025-09-20",
-                status: "Pending",
+            ),
+            const SizedBox(height: 24),
+            // All Invoices Section (Wrapped in Container)
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF111111),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.white12, width: 1),
               ),
-            ],
-          ),
-        ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "All Invoices",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  InvoiceCard(
+                    invoiceNumber: "INV-001",
+                    amount: "\$150",
+                    dueDate: "Due: Jan 5, 2025",
+                    status: "Unpaid",
+                    statusColor: Colors.red,
+                  ),
+                  const SizedBox(height: 12),
+                  InvoiceCard(
+                    invoiceNumber: "INV-002",
+                    amount: "\$300",
+                    dueDate: "Due: Jan 5, 2025",
+                    status: "Unpaid",
+                    statusColor: Colors.red,
+                  ),
+                  const SizedBox(height: 12),
+                  InvoiceCard(
+                    invoiceNumber: "INV-003",
+                    amount: "\$80",
+                    dueDate: "Due: Dec 26, 2024",
+                    status: "Paid",
+                    statusColor: const Color(0xFF76B500),
+                  ),
+                  const SizedBox(height: 12),
+                  InvoiceCard(
+                    invoiceNumber: "INV-004",
+                    amount: "\$120",
+                    dueDate: "Due: Dec 30, 2024",
+                    status: "Paid",
+                    statusColor: const Color(0xFF76B500),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -66,86 +180,82 @@ class InvoicesScreen extends StatelessWidget {
 
 class InvoiceCard extends StatelessWidget {
   final String invoiceNumber;
-  final String service;
   final String amount;
   final String dueDate;
   final String status;
+  final Color statusColor;
 
   const InvoiceCard({
     super.key,
     required this.invoiceNumber,
-    required this.service,
     required this.amount,
     required this.dueDate,
     required this.status,
+    required this.statusColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool isPaid = status == "Paid";
-
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0x14466B00), // Transparent card
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFF466B00), width: 1),
+        color: const Color(0xFF111111),
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            invoiceNumber,
-            style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 6),
-          Row(
+          // Left Section
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.description, size: 16, color: Colors.white70),
-              const SizedBox(width: 6),
-              Expanded(
+              Text(
+                invoiceNumber,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                dueDate,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
+          // Right Section
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                amount,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: statusColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: Text(
-                  service,
-                  style: const TextStyle(color: Colors.white70, fontSize: 13),
-                  overflow: TextOverflow.ellipsis,
+                  status,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ],
-          ),
-          const SizedBox(height: 4),
-          Row(
-            children: [
-              const Icon(Icons.attach_money, size: 16, color: Colors.white70),
-              const SizedBox(width: 6),
-              Text(amount, style: const TextStyle(color: Colors.white70, fontSize: 13)),
-            ],
-          ),
-          const SizedBox(height: 4),
-          Row(
-            children: [
-              const Icon(Icons.calendar_today, size: 16, color: Colors.white70),
-              const SizedBox(width: 6),
-              Text(dueDate, style: const TextStyle(color: Colors.white70, fontSize: 13)),
-            ],
-          ),
-          const SizedBox(height: 12),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: isPaid ? const Color(0xFF61181D) : Colors.grey[700],
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              onPressed: () {},
-              child: Text(
-                status,
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-              ),
-            ),
           ),
         ],
       ),
