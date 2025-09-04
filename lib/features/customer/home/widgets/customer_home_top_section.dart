@@ -160,25 +160,43 @@ class CustomerHomeTopSection extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          /// Action Buttons
-          Row(
-            children: [
-              Expanded(
-                child: _buildActionButton(
-                  "Report Issue",
-                  Icons.report_problem_outlined,
-                      () {},
+          /// Action Buttons in Single Container
+          Container(
+            decoration: BoxDecoration(
+              color: const Color(0x14466B00),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: const Color(0x1A466B00), width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x1A466B00),
+                  blurRadius: 300,
+                  spreadRadius: 2,
+                  offset: const Offset(0, 2),
                 ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: _buildActionButton(
+                      "Report Issue",
+                      Icons.report_problem_outlined,
+                          () {},
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _buildActionButton(
+                      "Pay Invoice",
+                      Icons.payment_outlined,
+                          () {},
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _buildActionButton(
-                  "Pay Invoice",
-                  Icons.payment_outlined,
-                      () {},
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),
@@ -275,43 +293,28 @@ class CustomerHomeTopSection extends StatelessWidget {
 
   /// Action Button Widget
   Widget _buildActionButton(String label, IconData icon, VoidCallback onPressed) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0x14466B00),
-        borderRadius: BorderRadius.circular(20), // Match radius with other containers
-        border: Border.all(color: const Color(0x1A466B00), width: 2), // Single border
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0x1A466B00),
-            blurRadius: 8,
-            spreadRadius: 2,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(20), // Match radius for ripple effect
-        child: InkWell(
-          onTap: onPressed,
-          borderRadius: BorderRadius.circular(20), // Match radius for ripple effect
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Icon(icon, color: Colors.white70, size: 20),
-                const SizedBox(height: 8),
-                Text(
-                  label,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  textAlign: TextAlign.center,
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(20),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Icon(icon, color: Colors.white70, size: 20),
+              const SizedBox(height: 8),
+              Text(
+                label,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
                 ),
-              ],
-            ),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ),
       ),
