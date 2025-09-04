@@ -6,7 +6,7 @@ class InvoiceDetailScreen extends StatelessWidget {
   final String amount; // e.g. "$150"
   final String dueDate; // e.g. "Jan 5, 2025"
   final String status; // e.g. "Unpaid" | "Paid"
-  final Color statusColor; // e.g. Colors.red or Colors.green
+  final Color statusColor; // e.g. Color(0xFF61181D) or Color(0xFF466B00)
 
   const InvoiceDetailScreen({
     super.key,
@@ -36,17 +36,18 @@ class InvoiceDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ===== Header Card (matches screenshot) =====
+            // ===== Header Card =====
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF101010),
+                color: const Color(0x14466B00), // Match InvoicesScreen
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white12, width: 1),
+                border: Border.all(color: const Color(0x1A466B00), width: 2),
                 boxShadow: const [
                   BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
+                    color: Color(0x1A466B00),
+                    blurRadius: 300,
+                    spreadRadius: 2,
                     offset: Offset(0, 2),
                   ),
                 ],
@@ -100,13 +101,10 @@ class InvoiceDetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 18),
-
-                  // Bottom: two columns -> Amount (label above value) & Due Date (label above value)
+                  // Bottom: two columns -> Amount & Due Date
                   Row(
                     children: [
-                      // Amount column
                       Expanded(
                         child: _buildLabeledStat(
                           icon: Icons.attach_money,
@@ -115,7 +113,6 @@ class InvoiceDetailScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 16),
-                      // Due date column
                       Expanded(
                         child: _buildLabeledStat(
                           icon: Icons.calendar_today,
@@ -128,20 +125,19 @@ class InvoiceDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
-
             // ===== Services Provided =====
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF101010),
+                color: const Color(0x14466B00), // Match InvoicesScreen
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white12, width: 1),
+                border: Border.all(color: const Color(0x1A466B00), width: 2),
                 boxShadow: const [
                   BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
+                    color: Color(0x1A466B00),
+                    blurRadius: 300,
+                    spreadRadius: 2,
                     offset: Offset(0, 2),
                   ),
                 ],
@@ -164,28 +160,27 @@ class InvoiceDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
-
             // ===== Payment Method =====
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF101010),
+                color: const Color(0x14466B00), // Match InvoicesScreen
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white12, width: 1),
+                border: Border.all(color: const Color(0x1A466B00), width: 2),
                 boxShadow: const [
                   BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
+                    color: Color(0x1A466B00),
+                    blurRadius: 300,
+                    spreadRadius: 2,
                     offset: Offset(0, 2),
                   ),
                 ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     'Payment Method',
                     style: TextStyle(
                       color: Colors.white,
@@ -193,28 +188,31 @@ class InvoiceDetailScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
-                      Icon(Icons.credit_card, color: Colors.white70, size: 20),
-                      SizedBox(width: 10),
-                      Text(
-                        '•••• •••• •••• 4242',
-                        style: TextStyle(color: Colors.white70, fontSize: 14),
-                      ),
-                      Spacer(),
-                      Text(
-                        'Expires 12/27',
-                        style: TextStyle(color: Colors.white54, fontSize: 12),
+                      const Icon(Icons.credit_card, color: Colors.white70, size: 20),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            '•••• •••• •••• 4242',
+                            style: TextStyle(color: Colors.white70, fontSize: 14),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Expires 12/27',
+                            style: TextStyle(color: Colors.white54, fontSize: 12),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-
             const SizedBox(height: 30),
-
             // ===== Pay Button =====
             SizedBox(
               width: double.infinity,
@@ -222,8 +220,8 @@ class InvoiceDetailScreen extends StatelessWidget {
                 onPressed: status == 'Paid' ? null : () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: status == 'Unpaid'
-                      ? const Color(0xFFD32F2F) // Red for Unpaid
-                      : const Color(0xFF388E3C), // Green for Paid
+                      ? const Color(0xFF61181D) // Match InvoicesScreen unpaid color
+                      : const Color(0xFF466B00), // Match InvoicesScreen paid color
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 14,
@@ -238,9 +236,7 @@ class InvoiceDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             const SizedBox(height: 12),
-
             const Center(
               child: Text(
                 'Secure Payment Powered By Stripe. Your Card Information is Encrypted And Safe.',
@@ -257,21 +253,16 @@ class InvoiceDetailScreen extends StatelessWidget {
     );
   }
 
-  // ===== small helper: label above value, with green icon =====
+  // ===== Helper: Label above value, with green icon =====
   Widget _buildLabeledStat({
     required IconData icon,
     required String label,
     required String value,
   }) {
-    const green = Color(0xFF63B400); // soft green like screenshot
+    const green = Color(0xFF466B00); // Match InvoicesScreen green
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: const [
-            Icon(Icons.circle, size: 0), // keeps row height predictable (no-op)
-          ],
-        ),
         Row(
           children: [
             Icon(icon, color: green, size: 20),
@@ -288,12 +279,12 @@ class InvoiceDetailScreen extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Padding(
-          padding: const EdgeInsets.only(left: 25.0), // Move value text further to the right
+          padding: const EdgeInsets.only(left: 25.0),
           child: Text(
             value,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 16, // Reduced font size for amount and date
+              fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -302,7 +293,7 @@ class InvoiceDetailScreen extends StatelessWidget {
     );
   }
 
-  // ===== service row =====
+  // ===== Service row =====
   Widget _buildServiceItem(String title, String amount) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cuttingedge/features/customer/report/view/report_screen.dart'; // Adjust import based on your project structure
 
 class CustomerHomeTopSection extends StatelessWidget {
   const CustomerHomeTopSection({super.key});
@@ -183,7 +184,14 @@ class CustomerHomeTopSection extends StatelessWidget {
                     child: _buildActionButton(
                       "Report Issue",
                       Icons.report_problem_outlined,
-                          () {},
+                          () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ReportScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(width: 12),
